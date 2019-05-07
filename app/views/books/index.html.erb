@@ -1,0 +1,11 @@
+<h1>Books</h1>
+
+<% @books.each do |book| %>
+  <div id="id-<%= book.id %>">
+    <h2>Title: <%= book.title %></h2>
+    <img src="<%= book.thumbnail_url %>" width="200px">
+    <ul><li>Author(s): <%= book.author_list %></li>
+      <li>Year Published: <%= book.year_published %></li>
+      <li>Page Count: <%= book.page_count %></li></ul>
+  </div>
+<% end %>
