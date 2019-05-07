@@ -1,6 +1,52 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/glynnisoconnell/Mod2/BookClub/spec/features/book_show_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Users/glynnisoconnell/Mod2/BookClub/spec/models/author_spec.rb": [
         1,
         null,
@@ -81,7 +127,7 @@
         1,
         null,
         1,
-        8,
+        14,
         null,
         null
       ],
@@ -112,6 +158,10 @@
         1,
         1,
         null,
+        null,
+        1,
+        2,
+        null,
         null
       ],
       "/Users/glynnisoconnell/Mod2/BookClub/app/controllers/application_controller.rb": [
@@ -120,6 +170,6 @@
         null
       ]
     },
-    "timestamp": 1557267196
+    "timestamp": 1557269346
   }
 }
