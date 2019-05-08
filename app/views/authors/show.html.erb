@@ -1,0 +1,12 @@
+<h1><%= @author.name %></h1>
+  <% @author.books.each do |book| %>
+  <div id="id-<%= book.id %>">
+    <h3>Title: <%= book.title %></h3>
+    <img src= "<%= book.thumbnail_url %>" width="200px">
+    <ul><li> <%= book.year_published %></li>
+      <li> <%= book.page_count %></li>
+      <% if book.multiple_authors? %>
+      <li> <%= book.authors_except(@author.name) %></li>
+      <% end %>
+      <% end %>
+    </div>
