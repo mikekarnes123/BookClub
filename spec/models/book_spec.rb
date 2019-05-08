@@ -24,5 +24,29 @@ RSpec.describe Book, type: :model do
         expect(expected).to eq(actual)
       end
     end
-  end 
+    describe '#multiple_authors?' do
+      it "should return true if multiple authors" do
+        hunger = Book.create(title: 'The Hunger Games', page_count: 374, year_published: 2008, thumbnail_url: 'https://images.gr-assets.com/books/1447303603l/2767052.jpg')
+        hunger.authors << Author.find_or_create_by(name: 'Suzanne Collins')
+
+        expect(hunger.multiple_authors?).to eq(false)
+
+        hunger.authors << Author.find_or_create_by(name: 'Carrie Walsh')
+
+        expect(hunger.multiple_authors?).to eq(true)
+      end
+    end
+    describe '#authors_except' do
+      it "should return all authors except for current author" do
+        hunger = Book.create(title: 'The Hunger Games', page_count: 374, year_published: 2008, thumbnail_url: 'https://images.gr-assets.com/books/1447303603l/2767052.jpg')
+        hunger.authors << Author.find_or_create_by(name: 'Suzanne Collins')
+        hunger.authors << Author.find_or_create_by(name: 'Stella Mainar')
+        stella = hunger.authors.last
+
+        expected = 'Suzanne Collins'
+
+        expect(hunger.authors_except(stella.name)).to eq(expected)
+      end
+    end
+  end
 end
