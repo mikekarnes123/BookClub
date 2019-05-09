@@ -8,6 +8,17 @@ class Book < ApplicationRecord
   has_many :reviews
 
   def author_list
-    authors.map {|author| author.name }.join(', ')
+    authors.pluck(:name).join(', ')
+  end
+
+  def multiple_authors?
+    return true if authors.count > 1
+    false
+  end
+  ###consider refactor
+  def authors_except(author_to_exclude)
+    unq_authors = authors.pluck(:name)
+    unq_authors.delete(author_to_exclude)
+    unq_authors.join(', ')
   end
 end
