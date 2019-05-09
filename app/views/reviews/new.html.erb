@@ -1,11 +1,11 @@
 <%= form_for [@book, @review] do |f| %>
   <%= f.label :user %>
-  <%= f.text_field :user %>
+  <%= f.text_field :user, :required => 'required' %>
   <%= f.label :review_headline %>
-  <%= f.text_field :review_headline %>
+  <%= f.text_field :review_headline, :required => 'required' %>
   <%= f.label :review_score %>
-  <%= f.number_field :review_score, :min => 0, :max => 5 %>
+  <%= f.number_field :review_score, :min => 0, :max => 5, :required => 'required' %>
   <%= f.label :review_body %>
-  <%= f.text_field :review_body %>
+  <%= f.text_field :review_body, :required => 'required' %>
   <%= f.submit "Add Review" %>
 <% end %>
