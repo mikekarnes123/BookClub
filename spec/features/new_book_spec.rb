@@ -34,7 +34,7 @@ RSpec.describe "book creation workflow" do
 
     new_book = Book.find_by(title: "Life Will Be the Death of Me")
     new_author = new_book.authors.last
-    
+
     within("#id-#{new_book.id}") do
       expect(page).to have_content(new_book.title)
       expect(page).to have_content(new_book.page_count)
@@ -42,6 +42,22 @@ RSpec.describe "book creation workflow" do
       expect(page).to have_content(new_author.name)
       expect(page).to have_css("img[src='http://clipart-library.com/images/6Tpo6G8TE.jpg']")
     end
+  end
 
+  it "sad path multiple authors" do
+    visit new_book_path
+    fill_in 'book[title]', with: "Life Will Be the Death of Me"
+    fill_in 'book[page_count]', with: 325
+    fill_in 'book[year_published]', with: "2019"
+    fill_in "authors[name]", with: "Chelsea Handler, Joe Dirt"
+    click_on "Add Book"
+
+    new_book = Book.find_by(title: "Life Will Be the Death of Me")
+    new_author_1 = new_book.authors.first
+    new_author_2 = new_book.authors.last
+
+    within("#id-#{new_book.id}") do
+      expect(page).to have_content("Author(s): #{new_author_1.name}, #{new_author_2.name}")
+    end
   end
 end
