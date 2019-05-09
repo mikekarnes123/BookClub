@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   validates_presence_of :thumbnail_url
   validates_presence_of :year_published
   has_many :book_authors
-  has_many :authors, through: :book_authors
+  has_many :authors, through: :book_authors, dependent: :destroy
   has_many :reviews
   after_initialize :set_defaults
   before_save :title_casing
