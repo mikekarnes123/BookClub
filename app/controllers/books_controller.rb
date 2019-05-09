@@ -15,8 +15,8 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     if @book.save
       @book.authors.create(author_params)
+      redirect_to books_path
     end
-    redirect_to books_path
   end
 
   private

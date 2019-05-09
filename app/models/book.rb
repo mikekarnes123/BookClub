@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   has_many :book_authors
   has_many :authors, through: :book_authors
   has_many :reviews
+  after_initialize :set_defaults
 
   def author_list
     authors.pluck(:name).join(', ')
@@ -18,5 +19,11 @@ class Book < ApplicationRecord
 
   def authors_except(author_to_exclude)
     authors.where.not(name: author_to_exclude).pluck(:name).join(', ')
+  end
+
+  def set_defaults
+    if thumbnail_url == ""
+      self.thumbnail_url = "http://clipart-library.com/images/6Tpo6G8TE.jpg"
+    end
   end
 end
