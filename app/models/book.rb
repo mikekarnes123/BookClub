@@ -6,7 +6,6 @@ class Book < ApplicationRecord
   has_many :book_authors
   has_many :authors, through: :book_authors
   has_many :reviews
-  accepts_nested_attributes_for :authors
 
   def author_list
     authors.pluck(:name).join(', ')
@@ -16,10 +15,8 @@ class Book < ApplicationRecord
     return true if authors.count > 1
     false
   end
-  ###consider refactor
+
   def authors_except(author_to_exclude)
-    unq_authors = authors.pluck(:name)
-    unq_authors.delete(author_to_exclude)
-    unq_authors.join(', ')
+    authors.where.not(name: author_to_exclude).pluck(:name).join(', ')
   end
 end

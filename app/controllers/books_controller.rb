@@ -12,15 +12,20 @@ class BooksController < ApplicationController
   end
 
   def create
-    # @author = Author.new(params[:book][:author])
-    # @author.save
     @book = Book.new(book_params)
-    @book.save
+    if @book.save
+      @book.authors.create(author_params)
+    end
     redirect_to books_path
   end
 
   private
+
   def book_params
-    params.require(:book).permit(:title, :page_count, :year_published, :thumbnail_url, authors_attributes: [:name])
+    params.require(:book).permit(:title, :page_count, :year_published, :thumbnail_url)
+  end
+
+  def author_params
+    params.require(:authors).permit(:name)
   end
 end

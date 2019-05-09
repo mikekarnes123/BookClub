@@ -7,9 +7,6 @@
   <%= f.text_field :year_published %>
   <%= f.label :thumbnail_url %>
   <%= f.text_field :thumbnail_url %>
-  <%= f.fields_for :authors, @book.authors.build do |ff| %>
-    <%= ff.label :name, "Author(s)" %>
-    <%= ff.text_field :name %>
-  <% end %>
+  Author(s)<input type="text" name="authors[name]">
   <%= f.submit "Add Book" %>
 <% end %>
