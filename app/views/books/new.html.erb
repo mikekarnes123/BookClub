@@ -1,0 +1,15 @@
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :page_count %>
+  <%= f.number_field :page_count %>
+  <%= f.label :year_published %>
+  <%= f.text_field :year_published %>
+  <%= f.label :thumbnail_url %>
+  <%= f.text_field :thumbnail_url %>
+  <%= f.fields_for :authors, @book.authors.build do |ff| %>
+    <%= ff.label :name, "Author(s)" %>
+    <%= ff.text_field :name %>
+  <% end %>
+  <%= f.submit "Add Book" %>
+<% end %>
