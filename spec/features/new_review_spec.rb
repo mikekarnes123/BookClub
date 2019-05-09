@@ -12,7 +12,7 @@ RSpec.describe "new review workflow" do
     click_on "Add Review"
 
     review = king.reviews.last
-    save_and_open_page
+
     within(".reviews") do
       within("#id-#{review.id}") do
         expect(page).to have_content(review.user)

@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
   resources :authors, only: [:show]
+  root 'welcome#index'
 
 end
