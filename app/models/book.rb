@@ -7,6 +7,7 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   has_many :reviews
   after_initialize :set_defaults
+  before_save :title_casing
 
   def author_list
     authors.pluck(:name).join(', ')
@@ -25,5 +26,9 @@ class Book < ApplicationRecord
     if thumbnail_url == ""
       self.thumbnail_url = "http://clipart-library.com/images/6Tpo6G8TE.jpg"
     end
+  end
+
+  def title_casing
+    self.title = title.titlecase
   end
 end
