@@ -11,6 +11,7 @@ class Book < ApplicationRecord
 
   def author_list
     authors.pluck(:name).join(', ')
+    # binding.pry
   end
 
   def multiple_authors?

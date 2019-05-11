@@ -25,8 +25,20 @@ RSpec.describe "when user visits book index" do
       expect(page).to have_content("Author(s): #{@css.authors.first.name}, #{@css.authors.last.name}")
       expect(page).to have_content("Page Count: #{@css.page_count}")
       expect(page).to have_content("Year Published: #{@css.year_published}")
-
       expect(page).to have_xpath("//img[@src='https://i1.wp.com/www.developermemes.com/wp-content/uploads/2014/01/CSS-Sucks-TShirt-Meme.jpg?resize=385%2C232']")
     end
+  end
+
+  it "allows user to click on author's name" do
+    visit books_path
+    save_and_open_page
+
+    click_on("#{@astronaut.authors.last.name}")
+    expect(current_path).to eq(author_path(@astronaut.authors))
+
+    visit books_path
+
+    click_on("#{@css.authors.last.name}")
+    expect(current_path).to eq(author_path(@css.authors))
   end
 end

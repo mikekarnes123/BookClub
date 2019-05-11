@@ -4,7 +4,9 @@
   <div id="id-<%= book.id %>">
     <h2>Title: <%= book.title %></h2>
     <img src="<%= book.thumbnail_url %>" width="200px">
-    <ul><li>Author(s): <%= book.author_list %></li>
+    <ul><li>Author(s): <% book.authors.map do |author| %>
+      <%= link_to author.name, author_path(author) %></li>
+      <% end %>
       <li>Year Published: <%= book.year_published %></li>
       <li>Page Count: <%= book.page_count %></li></ul>
   </div>
