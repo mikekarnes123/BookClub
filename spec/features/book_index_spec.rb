@@ -32,12 +32,12 @@ RSpec.describe "when user visits book index" do
   it "allows user to click on title of book" do
     visit books_path
 
-    click_on("#{@astronaut.title}")
+    click_on(@astronaut.title)
     expect(current_path).to eq(book_path(@astronaut))
 
     visit books_path
 
-    click_on("#{@css.title}")
+    click_on(@css.title)
     expect(current_path).to eq(book_path(@css))
   end
 end
