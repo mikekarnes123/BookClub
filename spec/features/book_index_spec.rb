@@ -22,7 +22,7 @@ RSpec.describe "when user visits book index" do
 
     within("#id-#{@css.id}") do
       expect(page).to have_content("Title: #{@css.title}")
-      expect(page).to have_content("Author(s): #{@css.authors.first.name}, #{@css.authors.last.name}")
+      expect(page).to have_content("Author(s): #{@css.authors.first.name} #{@css.authors.last.name}")
       expect(page).to have_content("Page Count: #{@css.page_count}")
       expect(page).to have_content("Year Published: #{@css.year_published}")
       expect(page).to have_xpath("//img[@src='https://i1.wp.com/www.developermemes.com/wp-content/uploads/2014/01/CSS-Sucks-TShirt-Meme.jpg?resize=385%2C232']")
@@ -40,4 +40,23 @@ RSpec.describe "when user visits book index" do
     click_on(@css.title)
     expect(current_path).to eq(book_path(@css))
   end
+
+  it "allows user to click on author of book" do
+    visit books_path
+
+    click_on(@astronaut.authors.last.name)
+    expect(current_path).to eq(author_path(@astronaut.authors.last))
+
+    visit books_path
+
+    click_on(@css.authors.last.name)
+    expect(current_path).to eq(author_path(@css.authors.last))
+
+    visit books_path
+
+    click_on(@css.authors.first.name)
+    expect(current_path).to eq(author_path(@css.authors.first))
+  end
+
+
 end
