@@ -64,7 +64,7 @@ RSpec.describe "book creation workflow" do
     fill_in 'book[title]', with: "Life Will Be the Death of Me"
     fill_in 'book[page_count]', with: 325
     fill_in 'book[year_published]', with: "2019"
-    fill_in "authors[name]", with: "Chelsea Handler, Joe Dirt"
+    fill_in "authors[name]", with: "Chelsea Handler Joe Dirt"
     click_on "Add Book"
 
     new_book = Book.find_by(title: "Life Will Be The Death Of Me")
@@ -72,7 +72,7 @@ RSpec.describe "book creation workflow" do
     new_author_2 = new_book.authors.last
 
     within("#id-#{new_book.id}") do
-      expect(page).to have_content("Author(s): #{new_author_1.name}, #{new_author_2.name}")
+      expect(page).to have_content("Author(s): Chelsea Handler Joe Dirt")
     end
   end
 
@@ -88,7 +88,7 @@ RSpec.describe "book creation workflow" do
     new_book = Book.find_by(title: "Life Will Be The Death Of Me")
 
     within("#id-#{new_book.id}") do
-      expect(page).to have_content("Author(s): Chelsea Handler, Joe Dirt")
+      expect(page).to have_content("Author(s): Chelsea Handler Joe Dirt")
     end
   end
 end
