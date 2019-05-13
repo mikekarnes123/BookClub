@@ -13,6 +13,15 @@ class Book < ApplicationRecord
     authors.pluck(:name).join(', ')
   end
 
+  def average_rating
+    return reviews.average(:review_score).round if reviews.count != 0
+    "No Reviews"
+  end
+
+  def number_of_reviews
+    reviews.count
+  end
+
   def multiple_authors?
     return true if authors.count > 1
     false

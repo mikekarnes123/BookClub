@@ -7,6 +7,8 @@
     <ul><li>Author(s): <% book.authors.each do |author| %>
                       <%= link_to author.name, author_path(author) %>
                     <% end %></li>
+      <li>Rating: <%= book.average_rating %></li>
+      <li>Reviews: <%= book.number_of_reviews %></li>
       <li>Year Published: <%= book.year_published %></li>
       <li>Page Count: <%= book.page_count %></li></ul>
   </div>
