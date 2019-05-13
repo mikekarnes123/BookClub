@@ -28,4 +28,23 @@ RSpec.describe "user showpage" do
     expect(page).to have_content(@css.title)
     expect(page).to have_content(@css.reviews.last.review_headline)
   end
+
+  it "visitors can delete reviews" do
+    user = "Space%20Good"
+
+    visit user_path(@css.reviews.last.user)
+
+    deleted_review_headline = @css.reviews.last.review_headline
+    deleted_review_body = @css.reviews.last.review_body
+
+    within(".reviews") do
+      within("#id-#{@css.reviews.last.id}") do
+        click_link("Delete this review")
+      end
+    end
+
+    expect(current_path).to eq(user_path(@astronaut.reviews.last.user))
+    expect(page).to_not have_content(deleted_review_body)
+    expect(page).to_not have_content(deleted_review_headline)
+  end
 end

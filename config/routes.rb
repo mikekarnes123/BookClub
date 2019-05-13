@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   get "/users/:user_name", to: 'users#show', as: :user
 
+  resources :reviews, only: [:destroy]
 end
