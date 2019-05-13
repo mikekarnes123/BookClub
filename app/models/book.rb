@@ -5,13 +5,12 @@ class Book < ApplicationRecord
   validates_presence_of :year_published
   has_many :book_authors
   has_many :authors, through: :book_authors, dependent: :destroy
-  has_many :reviews
+  has_many :reviews#, dependent: :destroy
   after_initialize :set_defaults
   before_save :title_casing
 
   def author_list
     authors.pluck(:name).join(', ')
-    # binding.pry
   end
 
   def multiple_authors?
