@@ -1,0 +1,11 @@
+<h1><%= @user %></h1>
+<div class="reviews">
+  <% @user_reviews.each do |review| %>
+  <div id="id-<%= review.id %>">
+    <h2><%= review.book.title %></h2>
+    <img src="<%= review.book.thumbnail_url %>">
+    <h4><%= review.review_headline %><br>Rating: <%= review.review_score %></h4>
+    <ul><li><%= review.review_body %></li>
+      <li><%= review.created_at %></li></ul></div>
+      <% end %>
+      </div>

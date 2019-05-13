@@ -9,7 +9,7 @@
   <%= link_to "Add Review", new_book_review_path(@book) %>
   <% @book.reviews.each do |review| %>
     <div id="id-<%= review.id %>">
-      <h4>User: <%= review.user %></h4>
+      <h4>User: <%= link_to review.user, user_path(review.user) %></h4>
       <ul><li>Title: <%= review.review_headline %></li>
         <li>Rating: <%= review.review_score %></li>
         <li>Review: <%= review.review_body %></li></ul>

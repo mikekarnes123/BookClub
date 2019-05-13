@@ -272,6 +272,39 @@
         null,
         null
       ],
+      "/Users/michaelkarnes/turing/mod1/mod2_projects/BookClub/spec/features/user_show_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/michaelkarnes/turing/mod1/mod2_projects/BookClub/spec/models/author_spec.rb": [
         1,
         null,
@@ -296,7 +329,7 @@
         null,
         null,
         1,
-        32,
+        35,
         null,
         null
       ],
@@ -388,7 +421,7 @@
         1,
         null,
         1,
-        6,
+        7,
         null,
         null,
         1,
@@ -410,13 +443,13 @@
         null,
         null,
         1,
-        78,
+        83,
         3,
         null,
         null,
         null,
         1,
-        28,
+        30,
         null,
         null
       ],
@@ -474,7 +507,7 @@
         null,
         null,
         1,
-        5,
+        6,
         null,
         null,
         1,
@@ -533,8 +566,17 @@
         3,
         null,
         null
+      ],
+      "/Users/michaelkarnes/turing/mod1/mod2_projects/BookClub/app/controllers/users_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1557778205
+    "timestamp": 1557780550
   }
 }
