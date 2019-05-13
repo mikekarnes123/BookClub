@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-13T14:10:05-06:00">2019-05-13T14:10:05-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-13T14:49:10-06:00">2019-05-13T14:49:10-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">99.38%</span></span>
+    (<span class="covered_percent"><span class="green">99.42%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.03
+         1.99
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>19</b> files in total.
-    <b>320</b> relevant lines. 
-    <span class="green"><b>318</b> lines covered</span> and
+    <b>21</b> files in total.
+    <b>346</b> relevant lines. 
+    <span class="green"><b>344</b> lines covered</span> and
     <span class="red"><b>2</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -77,7 +77,7 @@
         <td>18</td>
         <td>18</td>
         <td>0</td>
-        <td>3.7</td>
+        <td>3.8</td>
       </tr>
       
       <tr>
@@ -88,6 +88,16 @@
         <td>13</td>
         <td>1</td>
         <td>1.1</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#c90c4ac8829f727e5a852b147177149904a28c57" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>7</td>
+        <td>4</td>
+        <td>4</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -117,7 +127,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>5.4</td>
+        <td>5.9</td>
       </tr>
       
       <tr>
@@ -127,7 +137,7 @@
         <td>27</td>
         <td>27</td>
         <td>0</td>
-        <td>7.3</td>
+        <td>7.6</td>
       </tr>
       
       <tr>
@@ -196,6 +206,16 @@
         <td>25</td>
         <td>17</td>
         <td>17</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#79230cff3cf900fbd8eb96c22211fdb292436150" class="src_link" title="spec/features/user_show_spec.rb">spec/features/user_show_spec.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>31</td>
+        <td>22</td>
+        <td>22</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -470,8 +490,8 @@
           <code class="ruby">  def show</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="7">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="6" data-linenumber="7">
+          <span class="hits">6</span>
           
           <code class="ruby">    @book = Book.find(params[:id])</code>
         </li>
@@ -794,6 +814,67 @@
 </div>
 
       
+        <div class="source_table" id="c90c4ac8829f727e5a852b147177149904a28c57">
+  <div class="header">
+    <h3>app/controllers/users_controller.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>4</b> relevant lines. 
+      <span class="green"><b>4</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class UsersController &lt; ApplicationController</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def show</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @user = params[:user_name]</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @user_reviews = Review.where(user: @user)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
         <div class="source_table" id="ee4d30c004244626f5cbb6706e7e677e1c774f1d">
   <div class="header">
     <h3>app/controllers/welcome_controller.rb</h3>
@@ -942,8 +1023,8 @@
           <code class="ruby">  def title_casing</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="9">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="35" data-linenumber="9">
+          <span class="hits">35</span>
           
           <code class="ruby">    self.name = name.titlecase</code>
         </li>
@@ -1051,8 +1132,8 @@
           <code class="ruby">  def author_list</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="13">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="13">
+          <span class="hits">7</span>
           
           <code class="ruby">    authors.pluck(:name).join(&#39;, &#39;)</code>
         </li>
@@ -1183,8 +1264,8 @@
           <code class="ruby">  def set_defaults</code>
         </li>
       
-        <li class="covered" data-hits="78" data-linenumber="35">
-          <span class="hits">78</span>
+        <li class="covered" data-hits="83" data-linenumber="35">
+          <span class="hits">83</span>
           
           <code class="ruby">    if thumbnail_url == &quot;&quot;</code>
         </li>
@@ -1219,8 +1300,8 @@
           <code class="ruby">  def title_casing</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="41">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="30" data-linenumber="41">
+          <span class="hits">30</span>
           
           <code class="ruby">    self.title = title.titlecase</code>
         </li>
@@ -2997,6 +3078,211 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="79230cff3cf900fbd8eb96c22211fdb292436150">
+  <div class="header">
+    <h3>spec/features/user_show_spec.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>22</b> relevant lines. 
+      <span class="green"><b>22</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;rails_helper&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">RSpec.describe &quot;user showpage&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    before :each do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @astronaut = Book.create(title: &quot;An Astronaut&#39;s Guide to Life on Earth&quot;, page_count: 284, year_published: 2013, thumbnail_url: &#39;http://media.npr.org/assets/bakertaylor/covers/a/an-astronauts-guide-to-life-on-earth/9780316253017_custom-72b5b1e3d259fb604fee1401424db3c8cd04cfe0-s6-c30.jpg&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @astronaut.authors &lt;&lt; Author.find_or_create_by(name: &#39;Chris Hadfield&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @astronaut.reviews.create_with(review_body: &#39;I guess they can if you take videos and post them on youtube&#39;, review_headline: &#39;In space, no one can hear you play guitar&#39;, review_score: 4).find_or_create_by(user: &#39;Space Good&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @css = Book.create(title: &#39;CSSucks&#39;, page_count: 420, year_published: 2019, thumbnail_url: &#39;https://i1.wp.com/www.developermemes.com/wp-content/uploads/2014/01/CSS-Sucks-TShirt-Meme.jpg?resize=385%2C232&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @css.authors &lt;&lt; Author.find_or_create_by(name: &#39;Matt Weiss&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @css.authors &lt;&lt; Author.find_or_create_by(name: &#39;Matt Levy&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @css.reviews.create_with(review_body: &quot;Thinks About In The Bathroom&quot;, review_headline: &quot;Facts Your Elected Official&quot;, review_score: &quot;3&quot;).find_or_create_by(user: &quot;Space Good&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  it &quot;shows visitors a users page with all reviews of books&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    visit book_path(@astronaut)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    click_link(&#39;Space Good&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(current_path).to eq(user_path(@astronaut.reviews.last.user))</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(@astronaut.reviews.last.review_headline)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(@astronaut.reviews.last.review_body)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(@astronaut.reviews.last.review_score)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(@astronaut.reviews.last.created_at)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(@astronaut.title)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_xpath(&quot;//img[@src=&#39;http://media.npr.org/assets/bakertaylor/covers/a/an-astronauts-guide-to-life-on-earth/9780316253017_custom-72b5b1e3d259fb604fee1401424db3c8cd04cfe0-s6-c30.jpg&#39;]&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(@css.title)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="29">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(@css.reviews.last.review_headline)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
           
           
           <code class="ruby">end</code>

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :authors, only: [:show, :destroy]
   root 'welcome#index'
 
+  get "/users/:user_name", to: 'users#show', as: :user
+
 end
