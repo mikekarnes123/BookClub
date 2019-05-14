@@ -7,6 +7,11 @@ RSpec.describe "when user visits book show page" do
     @css.authors << Author.find_or_create_by(name: 'Matt Weiss')
     @css.authors << Author.find_or_create_by(name: 'Matt Levy')
     @mockingbird.authors << Author.find_or_create_by(name: 'Matt Levy')
+    @css.reviews.create_with(review_body: "Make Your Psychiatrist Go To The Gym More", review_headline: "Scary Truths That Will", review_score: "1").find_or_create_by(user: "CozyLittleBookJournal")
+    @css.reviews.create_with(review_body: "Agriculture Secretary Thomas J. Vilsack", review_headline: "Photoshop Tips From", review_score: "2").find_or_create_by(user: "Ronald Ward")
+    @css.reviews.create_with(review_body: "Keep To Themselves", review_headline: "Secrets Accountants", review_score: "3").find_or_create_by(user: "Dell MacApple")
+    @css.reviews.create_with(review_body: "6 Practical Beard Care Tips", review_headline: "Scarlett Johansson's", review_score: "4").find_or_create_by(user: "Demetrius Levenworth")
+    @css.reviews.create_with(review_body: "Ernest Moniz Save Skin Care?", review_headline: "Will Energy Secretary", review_score: "5").find_or_create_by(user: "Ed Bed")
   end
 
   it "should display author information" do
@@ -46,5 +51,17 @@ RSpec.describe "when user visits book show page" do
     expect(page).to_not have_content(ml)
     expect(page).to_not have_content(@css.title)
     expect(page).to_not have_content(ml_2)
+  end
+
+  it "should display top review for each book" do
+    visit author_path(@css.authors.last)
+
+    within("#id-#{@css.id}") do
+      expect(page).to have_content("Top Review:")
+      expect(page).to have_content(@css.reviews.last.user)
+      expect(page).to have_content(@css.reviews.last.review_headline)
+      expect(page).to have_content(@css.reviews.last.review_body)
+      expect(page).to have_content(@css.reviews.last.review_score)
+    end
   end
 end

@@ -1,13 +1,22 @@
 <h1><%= @author.name %></h1>
 <%= link_to "Delete This Author", author_path(@author), method: :delete %>
-  <% @author.books.each do |book| %>
-  <div id="id-<%= book.id %>">
-    <h3>Title: <%= book.title %></h3>
-    <img src= "<%= book.thumbnail_url %>" width="200px">
-    <ul><li> <%= book.year_published %></li>
-      <li> <%= book.page_count %></li>
-      <% if book.multiple_authors? %>
-      <li> <%= book.authors_except(@author.name) %></li>
-      <% end %>
-      <% end %>
-    </div>
+<% @author.books.each do |book| %>
+<div id="id-<%= book.id %>">
+  <h3>Title: <%= book.title %></h3>
+  <img src= "<%= book.thumbnail_url %>" width="200px">
+  <ul><li> <%= book.year_published %></li>
+    <li> <%= book.page_count %></li>
+    <% if book.multiple_authors? %>
+    <li> <%= book.authors_except(@author.name) %></li>
+    <% if book.reviews %>
+    <h5>Top Review:</h5>
+    <ul>
+      <li><%= book.top_review.user %></li>
+      <li><%= book.top_review.review_headline %></li>
+      <li><%= book.top_review.review_score %></li>
+      <li><%= book.top_review.review_body %></li>
+    </ul>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>

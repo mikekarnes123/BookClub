@@ -40,4 +40,8 @@ class Book < ApplicationRecord
   def title_casing
     self.title = title.titlecase
   end
+
+  def top_review
+    reviews.order(review_score: :desc).limit(1).last
+  end
 end
