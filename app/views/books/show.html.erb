@@ -1,4 +1,5 @@
 <div id="id-<%= @book.id %>">
+  <%= link_to "Delete Book", book_path(@book), method: :delete %>
   <h2>Title: <%= @book.title %></h2>
   <img src="<%= @book.thumbnail_url %>" width="200px">
   <ul><li>Author(s): <%= @book.author_list %></li>

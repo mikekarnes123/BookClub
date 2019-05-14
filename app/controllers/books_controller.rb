@@ -21,6 +21,14 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    book = Book.find(params[:id])
+    book.reviews.each { |review| review.destroy }
+    book.authors.each { |author| author.destroy if author.books.count == 1 }
+    book.destroy
+    redirect_to books_path
+  end
+
   private
 
   def book_params
