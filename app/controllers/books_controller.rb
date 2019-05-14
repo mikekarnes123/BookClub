@@ -1,6 +1,13 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @book_count = Book.all.count
+    if params[:sort] == "highest_rated"
+      @books = Book.best_books
+    elsif params[:sort] == "lowest_rated"
+      @books = Book.worst_books
+    else
+      @books = Book.all
+    end
   end
 
   def show

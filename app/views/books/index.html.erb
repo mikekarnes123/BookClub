@@ -7,13 +7,15 @@
     <ul><li>Author(s): <% book.authors.each do |author| %>
                       <%= link_to author.name, author_path(author) %>
                     <% end %></li>
-      <li>Rating: <%= book.average_rating %></li>
+      <li>Rating: <%= book.average_rating.round %></li>
       <li>Reviews: <%= book.number_of_reviews %></li>
       <li>Year Published: <%= book.year_published %></li>
       <li>Page Count: <%= book.page_count %></li></ul>
   </div>
 <% end %>
-<% if @books.count >= 3 %>
+<%= link_to "Highest Rated", books_path(:sort => "highest_rated") %>
+<%= link_to "Lowest Rated", books_path(:sort => "lowest_rated") %>
+<% if @book_count >= 3 %>
 <div class="book-stats-box">
  <section id="bestbooks">
    <h5> Best 3 Books:</h5>
@@ -32,4 +34,4 @@
    </ul>
  </section>
 </div>
-<% end  %>
+<% end %>
