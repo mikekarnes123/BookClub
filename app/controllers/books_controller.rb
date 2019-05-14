@@ -7,6 +7,12 @@ class BooksController < ApplicationController
       @books = Book.worst_books
     elsif params[:sort] == "most_pages"
       @books = Book.all.order("page_count DESC")
+    elsif params[:sort] == "least_pages"
+      @books = Book.all.order("page_count ASC")
+    elsif params[:sort] == "most_reviews"
+      @books = Book.joins(:reviews).select("books.*, count(reviews) as review_count").group(:id).order("review_count DESC")
+    elsif params[:sort] == "least_reviews"
+      @books = Book.joins(:reviews).select("books.*, count(reviews) as review_count").group(:id).order("review_count ASC")
     else
       @books = Book.all
     end

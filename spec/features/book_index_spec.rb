@@ -153,6 +153,23 @@ RSpec.describe "when user visits book index" do
     expect(page.all("div")[1]).to have_content(@css.title)
   end
 
+  it "can sort by number of reviews" do
+    @css.reviews.create_with(review_body: "Thinks About In The Bathroom", review_headline: "Facts Your Elected Official", review_score: "5").find_or_create_by(user: "Stegurus Jones")
+
+    visit books_path
+    click_on "Most Reviews"
+
+    expect(page.all("div")[0]).to have_content(@css.title)
+    expect(page.all("div")[1]).to have_content(@astronaut.title)
+
+
+    visit books_path
+    click_on "Least Reviews"
+
+    expect(page.all("div")[0]).to have_content(@astronaut.title)
+    expect(page.all("div")[1]).to have_content(@css.title)
+  end
+
   it "can sort by page count" do
 
     visit books_path

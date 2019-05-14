@@ -17,6 +17,8 @@
 <%= link_to "Lowest Rated", books_path(:sort => "lowest_rated") %>
 <%= link_to "Most Pages", books_path(:sort => "most_pages") %>
 <%= link_to "Least Pages", books_path(:sort => "least_pages") %>
+<%= link_to "Most Reviews", books_path(:sort => "most_reviews") %>
+<%= link_to "Least Reviews", books_path(:sort => "least_reviews") %>
 <% if @book_count >= 3 %>
 <div class="book-stats-box">
  <section id="bestbooks">
