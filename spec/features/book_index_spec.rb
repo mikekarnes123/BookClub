@@ -12,7 +12,7 @@ RSpec.describe "when user visits book index" do
     @astronaut.reviews.create_with(review_body: 'I hate space for some reason', review_headline: 'Boo Space', review_score: 2).find_or_create_by(user: 'Spacehater123')
     @astronaut.reviews.create_with(review_body: 'I also hate space for some reason', review_headline: 'Boo Space2', review_score: 1).find_or_create_by(user: 'Spacehater456')
     @astronaut.reviews.create_with(review_body: 'That was way more exciting', review_headline: "Wasn't The Martian based on a true story?", review_score: 3).find_or_create_by(user: 'Thatoneexgirlfriend')
-    @astronaut.reviews.create_with(review_body: 'I guess they can if you take videos and post them on youtube', review_headline: 'In space, no one can hear you play guitar', review_score: 4).find_or_create_by(user: 'Space Good')
+    @astronaut.reviews.create_with(review_body: 'I guess they can if you take videos and post them on youtube', review_headline: 'In space, no one can hear you play guitar', review_score: 1).find_or_create_by(user: 'Space Good')
     @css.reviews.create_with(review_body: "Make Your Psychiatrist Go To The Gym More", review_headline: "Scary Truths That Will", review_score: "1").find_or_create_by(user: "CozyLittleBookJournal")
     @css.reviews.create_with(review_body: "Agriculture Secretary Thomas J. Vilsack", review_headline: "Photoshop Tips From", review_score: "2").find_or_create_by(user: "Ronald Ward")
     @css.reviews.create_with(review_body: "Keep To Themselves", review_headline: "Secrets Accountants", review_score: "3").find_or_create_by(user: "Dell MacApple")
@@ -134,5 +134,56 @@ RSpec.describe "when user visits book index" do
         expect(page).to have_content("The Hunger Games")
       end
     end
+  end
+
+  it "can sort by average rating" do
+    @css.reviews.create_with(review_body: "Thinks About In The Bathroom", review_headline: "Facts Your Elected Official", review_score: "5").find_or_create_by(user: "Stegurus Jones")
+
+    visit books_path
+    click_on "Highest Rated"
+
+    expect(page.all("div")[0]).to have_content(@css.title)
+    expect(page.all("div")[1]).to have_content(@astronaut.title)
+
+
+    visit books_path
+    click_on "Lowest Rated"
+
+    expect(page.all("div")[0]).to have_content(@astronaut.title)
+    expect(page.all("div")[1]).to have_content(@css.title)
+  end
+
+  it "can sort by number of reviews" do
+    @css.reviews.create_with(review_body: "Thinks About In The Bathroom", review_headline: "Facts Your Elected Official", review_score: "5").find_or_create_by(user: "Stegurus Jones")
+
+    visit books_path
+    click_on "Most Reviews"
+
+    expect(page.all("div")[0]).to have_content(@css.title)
+    expect(page.all("div")[1]).to have_content(@astronaut.title)
+
+
+    visit books_path
+    click_on "Least Reviews"
+
+    expect(page.all("div")[0]).to have_content(@astronaut.title)
+    expect(page.all("div")[1]).to have_content(@css.title)
+  end
+
+  it "can sort by page count" do
+
+    visit books_path
+
+    click_on "Most Pages"
+
+    expect(page.all("div")[0]).to have_content(@css.title)
+    expect(page.all("div")[1]).to have_content(@astronaut.title)
+
+
+    visit books_path
+    click_on "Least Pages"
+
+    expect(page.all("div")[0]).to have_content(@astronaut.title)
+    expect(page.all("div")[1]).to have_content(@css.title)
   end
 end

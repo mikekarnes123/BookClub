@@ -14,12 +14,16 @@ class Book < ApplicationRecord
   end
 
   def self.best_books
-   joins(:reviews).select("books.*, avg(reviews.review_score) as average_rating").group(:id).order("average_rating DESC")
+   joins(:reviews).select("books.*, avg(reviews.review_score) as zebra").group(:id).order("zebra DESC")
+  end
+
+  def self.worst_books
+   joins(:reviews).select("books.*, avg(reviews.review_score) as zebra").group(:id).order("zebra ASC")
   end
 
   def average_rating
-    return reviews.average(:review_score).round if reviews.count != 0
-    "No Reviews"
+    return reviews.average(:review_score) if reviews.count != 0
+    0
   end
 
   def number_of_reviews
