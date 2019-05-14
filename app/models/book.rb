@@ -13,6 +13,10 @@ class Book < ApplicationRecord
     authors.pluck(:name).join(', ')
   end
 
+  def self.best_books
+   joins(:reviews).select("books.*, avg(reviews.review_score) as average_rating").group(:id).order("average_rating DESC")
+  end
+
   def average_rating
     return reviews.average(:review_score).round if reviews.count != 0
     "No Reviews"
