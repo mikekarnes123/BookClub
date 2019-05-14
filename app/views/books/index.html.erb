@@ -13,3 +13,23 @@
       <li>Page Count: <%= book.page_count %></li></ul>
   </div>
 <% end %>
+<% if @books.count >= 3 %>
+<div class="book-stats-box">
+ <section id="bestbooks">
+   <h5> Best 3 Books:</h5>
+   <ul>
+     <li><%= @books.best_books.first.title %></li>
+     <li><%= @books.best_books.second.title %></li>
+     <li><%= @books.best_books.third.title %></li>
+   </ul>
+  </section>
+  <section id="worstbooks">
+   <h5> Worst 3 Books:</h5>
+   <ul>
+     <li><%= @books.best_books[-1].title %></li>
+     <li><%= @books.best_books[-2].title %></li>
+     <li><%= @books.best_books[-3].title %></li>
+   </ul>
+ </section>
+</div>
+<% end  %>

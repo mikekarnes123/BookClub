@@ -81,8 +81,58 @@ RSpec.describe "when user visits book index" do
     within("#id-#{@css.id}") do
       expect(page).to have_content("Reviews: 6")
     end
-
-
   end
 
+  it "has stats box with appropriate information" do
+    #poorly rated book X 3
+    hunger = Book.create(title: 'The Hunger Games', page_count: 374, year_published: 2008, thumbnail_url: 'https://images.gr-assets.com/books/1447303603l/2767052.jpg')
+    hunger.authors << Author.find_or_create_by(name: 'Suzanne Collins')
+    hunger.reviews.create_with(review_body: "Secrets From Batman", review_headline: "Hilarious Dental Care", review_score: "1").find_or_create_by(user: "CozyLittleBookJournal")
+    hunger.reviews.create_with(review_body: "Save Trumpet Playing?", review_headline: "Can Martin Scorsese", review_score: "2").find_or_create_by(user: "Tex Montreal")
+    hunger.reviews.create_with(review_body: "Make Psychologists Feel Ashamed", review_headline: "Shocking Things That", review_score: "1").find_or_create_by(user: "AmericaSolid")
+    hunger.reviews.create_with(review_body: "Your Web Designer Feel More Attractive", review_headline: "Incredible Facts That Will Make", review_score: "2").find_or_create_by(user: "Dell MacApple")
+    hunger.reviews.create_with(review_body: "Receptionists Won't Tell Their Friends", review_headline: "Staggering Things", review_score: "2").find_or_create_by(user: "Ed Bed")
+    hunger.reviews.create_with(review_body: "Surprising Metallurgy Secrets", review_headline: "Ashton Kutcher's 15", review_score: "1").find_or_create_by(user: "Monica Labrador")
+    farm = Book.create(title: 'Animal Farm', page_count: 122, year_published: 1945, thumbnail_url: 'https://images.gr-assets.com/books/1424037542l/7613.jpg')
+    farm.authors << Author.find_or_create_by(name: 'George Orwell')
+    farm.reviews.create_with(review_body: "That Will Make Your Urologist Sleepy", review_headline: "Frightening Secrets", review_score: "1").find_or_create_by(user: "CozyLittleBookJournal")
+    farm.reviews.create_with(review_body: "About Pet Care", review_headline: "Awesome Facts", review_score: "1").find_or_create_by(user: "Tex Montreal")
+    farm.reviews.create_with(review_body: "Fathers Nervous", review_headline: "Truths That Make", review_score: "1").find_or_create_by(user: "AmericaSolid")
+    farm.reviews.create_with(review_body: "Secrets From Johnny Depp", review_headline: "Unbelievable Frisbee Golf", review_score: "1").find_or_create_by(user: "Stegosaurus Jones")
+    farm.reviews.create_with(review_body: "Are Hiding From You", review_headline: "Secrets Spouses", review_score: "1").find_or_create_by(user: "Molly Popper")
+    farm.reviews.create_with(review_body: "Incredible Microsoft Excel Tips", review_headline: "Julia Roberts's 15", review_score: "1").find_or_create_by(user: "Emma Stout")
+    fellowship = Book.create(title: 'The Fellowship Of The Rings', page_count: 423, year_published: 1954, thumbnail_url: 'http://images.mentalfloss.com/sites/default/files/styles/width-constrained-728/public/507311-_amazon91jbdarvqml.jpg')
+    fellowship.authors << Author.find_or_create_by(name: 'J.R.R. Tolkien')
+    fellowship.reviews.create_with(review_body: "Mother Isn't Telling You", review_headline: "Scary Secrets Your", review_score: "1").find_or_create_by(user: "AmericaSolid")
+    fellowship.reviews.create_with(review_body: "Supervisors Won't Tell You", review_headline: "Embarrassing Things", review_score: "1").find_or_create_by(user: "Dell MacApple")
+    fellowship.reviews.create_with(review_body: "PowerPoint Tips From Brad Pitt", review_headline: "Little-Known", review_score: "1").find_or_create_by(user: "Demetrius Levenworth")
+    fellowship.reviews.create_with(review_body: "Baristas Are Using Against You", review_headline: "Fascinating Things", review_score: "1").find_or_create_by(user: "Stegosaurus Jones")
+    fellowship.reviews.create_with(review_body: "Grandmothers Work Harder", review_headline: "Facts That Make", review_score: "1").find_or_create_by(user: "Tex Montreal")
+    fellowship.reviews.create_with(review_body: "Of Joke Writing", review_headline: "The Surprising Secrets", review_score: "1").find_or_create_by(user: "Monica Labrador")
+    # one additional well rated book
+    king = Book.create(title: 'The Return Of The King', page_count: 416, year_published: 1955, thumbnail_url: 'https://images-na.ssl-images-amazon.com/images/I/41Qx%2BidkxsL.jpg')
+    king.authors << Author.find_or_create_by(name: 'J.R.R. Tolkien')
+    king.reviews.create_with(review_body: " Waiters Sleepy", review_headline: "Facts That Make", review_score: "4").find_or_create_by(user: "Ronald Ward")
+    king.reviews.create_with(review_body: "Will Never Admit", review_headline: "Truths Your Grandfather", review_score: "4").find_or_create_by(user: "AmericaSolid")
+    king.reviews.create_with(review_body: "From Chris Pine", review_headline: "Surprising Tree Climbing Tips", review_score: "3").find_or_create_by(user: "Dell MacApple")
+    king.reviews.create_with(review_body: "That Make Lawyers Angry", review_headline: "Amazing Truths", review_score: "3").find_or_create_by(user: "Demetrius Levenworth")
+    king.reviews.create_with(review_body: "Will Make Your Local Politician Nervous", review_headline: "Mind-Blowing Secrets That", review_score: "2").find_or_create_by(user: "Ed Bed")
+    king.reviews.create_with(review_body: "5 Mind-Blowing Angry Birds Tips", review_headline: "Netflix CEO Reed Hastings's", review_score: "5").find_or_create_by(user: "Stegosaurus Jones")
+
+    visit books_path
+
+    within(".book-stats-box") do
+      within("#bestbooks") do
+        expect(page).to have_content("The Return Of The King")
+        expect(page).to have_content("An Astronaut's Guide To Life On Earth")
+        expect(page).to have_content("Cs Sucks")
+      end
+
+      within("#worstbooks") do
+        expect(page).to have_content("The Fellowship Of The Rings")
+        expect(page).to have_content("Animal Farm")
+        expect(page).to have_content("The Hunger Games")
+      end
+    end
+  end
 end
