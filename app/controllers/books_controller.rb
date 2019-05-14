@@ -5,6 +5,8 @@ class BooksController < ApplicationController
       @books = Book.best_books
     elsif params[:sort] == "lowest_rated"
       @books = Book.worst_books
+    elsif params[:sort] == "most_pages"
+      @books = Book.all.order("page_count DESC")
     else
       @books = Book.all
     end
