@@ -41,4 +41,15 @@ RSpec.describe "when user visits book show page" do
       end
     end
   end
+  it 'has book deletion functionality' do
+    visit book_path(@css)
+
+    css_title = @css.title
+
+    click_on("Delete Book")
+
+
+    expect(current_path).to eq(books_path)
+    expect(page).to_not have_content(css_title)
+  end
 end
