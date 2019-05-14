@@ -47,4 +47,19 @@ RSpec.describe "user showpage" do
     expect(page).to_not have_content(deleted_review_body)
     expect(page).to_not have_content(deleted_review_headline)
   end
+  it "visitors can sort reviews" do
+    user = "Space%20Good"
+
+    visit user_path(@css.reviews.last.user)
+
+    within(".reviews") do
+      click_link("Newest Reviews")
+      expect(page.all('div')[0]).to have_content("Facts Your Elected Official")
+      expect(page.all('div')[1]).to have_content("In space, no one can hear you play guitar")
+
+      click_link("Oldest Reviews")
+      expect(page.all('div')[0]).to have_content("In space, no one can hear you play guitar")
+      expect(page.all('div')[1]).to have_content("Facts Your Elected Official")
+    end
+  end
 end

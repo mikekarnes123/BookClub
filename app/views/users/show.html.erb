@@ -1,5 +1,7 @@
 <h1><%= @user %></h1>
 <div class="reviews">
+  <%= link_to "Newest Reviews", user_path(@user, :sort => "newest") %>
+  <%= link_to "Oldest Reviews", user_path(@user, :sort => "oldest") %>
   <% @user_reviews.each do |review| %>
   <div id="id-<%= review.id %>">
     <h2><%= review.book.title %></h2>
