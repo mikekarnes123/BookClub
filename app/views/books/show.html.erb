@@ -1,3 +1,24 @@
+<div class="stats-box">
+  <section id="bestreviews">
+    <h5>Best Reviews</h5>
+    <% @book.best_review.each do |review| %>
+      <%= review.user %>
+      <%= review.review_headline %>
+      <%= review.review_score %>
+    <% end %>
+  </section>
+  <section id="worstreviews">
+    <h5>Worst Reviews</h5>
+    <% @book.worst_review.each do |review| %>
+      <%= review.user %>
+      <%= review.review_headline %>
+      <%= review.review_score %>
+    <% end %>
+  </section>
+  <section id="averagerating">
+    <h5>Average Rating: <%= @book.average_rating.round %></h5>
+  </section>
+</div>
 <div id="id-<%= @book.id %>">
   <%= link_to "Delete Book", book_path(@book), method: :delete %>
   <h2>Title: <%= @book.title %></h2>

@@ -26,6 +26,15 @@ class Book < ApplicationRecord
     0
   end
 
+  def best_review
+    reviews.select("reviews.*").order("review_score DESC").limit(3)
+  end
+
+  def worst_review
+    reviews.select("reviews.*").order("review_score ASC").limit(3)
+
+  end
+
   def number_of_reviews
     reviews.count
   end
