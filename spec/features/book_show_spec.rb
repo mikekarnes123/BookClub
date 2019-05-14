@@ -41,4 +41,15 @@ RSpec.describe "when user visits book show page" do
       end
     end
   end
+
+  it "should allow visitor to click on user names" do
+    visit book_path(@css)
+
+    expect(page).to have_content("#{@css.reviews.last.user}")
+    click_on("#{@css.reviews.last.user}")
+
+    visit book_path(@css)
+    expect(page).to have_content("#{@css.reviews.last.user}")
+    click_on("#{@css.reviews.first.user}")
+  end
 end
