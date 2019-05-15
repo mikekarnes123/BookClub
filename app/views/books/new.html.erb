@@ -1,3 +1,4 @@
+<div style="margin-top: 2%;">
 <%= form_for @book do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -10,3 +11,4 @@
   Author(s)<input type="text" name="authors[name]">
   <%= f.submit "Add Book" %>
 <% end %>
+</div>

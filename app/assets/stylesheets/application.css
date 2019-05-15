@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ .book-card { border-style: solid;
+   margin-bottom: 2%;
+   padding: 3%;
+   background-color: beige; }
+
+ .review-card { border-style: solid;
+   margin-bottom: 2%;
+   padding: 3%;
+   background-color: beige; }
+
+   .all-pages{
+     background-color: grey;
+   }
+
+   .user-card { border-style: solid;
+     margin-bottom: 2%;
+     padding: 3%;
+     background-color: lightpink; }

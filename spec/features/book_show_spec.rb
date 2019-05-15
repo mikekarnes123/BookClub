@@ -14,7 +14,8 @@ RSpec.describe "when user visits book show page" do
 
     within("#id-#{@css.id}") do
       expect(page).to have_content("Title: #{@css.title}")
-      expect(page).to have_content("Author(s): #{@css.authors.first.name}, #{@css.authors.last.name}")
+      expect(page).to have_link(@css.authors.first.name)
+      expect(page).to have_link(@css.authors.last.name)
       expect(page).to have_content("Page Count: #{@css.page_count}")
       expect(page).to have_content("Year Published: #{@css.year_published}")
 

@@ -1,40 +1,23 @@
-<div class="stats-box">
-  <section id="bestreviews">
-    <h5>Best Reviews</h5>
-    <% @book.best_review.each do |review| %>
-      <%= review.user %>
-      <%= review.review_headline %>
-      <%= review.review_score %>
-    <% end %>
-  </section>
-  <section id="worstreviews">
-    <h5>Worst Reviews</h5>
-    <% @book.worst_review.each do |review| %>
-      <%= review.user %>
-      <%= review.review_headline %>
-      <%= review.review_score %>
-    <% end %>
-  </section>
-  <section id="averagerating">
-    <h5>Average Rating: <%= @book.average_rating.round %></h5>
-  </section>
-</div>
 <div id="id-<%= @book.id %>">
   <%= link_to "Delete Book", book_path(@book), method: :delete %>
   <h2>Title: <%= @book.title %></h2>
   <img src="<%= @book.thumbnail_url %>" width="200px">
-  <ul><li>Author(s): <%= @book.author_list %></li>
+  <ul>Author(s): <% @book.authors.each do |author| %>
+  <ul>
+    <li><%= link_to author.name, author_path(author) %></li>
+  </ul>
+  <% end %>
     <li>Year Published: <%= @book.year_published %></li>
     <li>Page Count: <%= @book.page_count %></li></ul>
 </div>
-<section class="reviews">
-  <%= link_to "Add Review", new_book_review_path(@book) %>
+<%= link_to "Add Review", new_book_review_path(@book) %>
+<div class="reviews">
   <% @book.reviews.each do |review| %>
-    <div id="id-<%= review.id %>">
+    <div class="review-card" id="id-<%= review.id %>">
       <h4>User: <%= link_to review.user, user_path(review.user) %></h4>
       <ul><li>Title: <%= review.review_headline %></li>
         <li>Rating: <%= review.review_score %></li>
         <li>Review: <%= review.review_body %></li></ul>
-        <% end %>
     </div>
-  </section>
+  <% end %>
+</div>

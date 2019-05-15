@@ -3,9 +3,9 @@
   <%= link_to "Newest Reviews", user_path(@user, :sort => "newest") %>
   <%= link_to "Oldest Reviews", user_path(@user, :sort => "oldest") %>
   <% @user_reviews.each do |review| %>
-  <div id="id-<%= review.id %>">
+  <div class="user-card" id="id-<%= review.id %>">
     <h2><%= review.book.title %></h2>
-    <img src="<%= review.book.thumbnail_url %>">
+    <img src="<%= review.book.thumbnail_url %>" width="200px">
     <h4><%= review.review_headline %><br>Rating: <%= review.review_score %></h4>
     <ul>
       <li><%= review.review_body %></li>
