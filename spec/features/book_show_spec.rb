@@ -52,4 +52,38 @@ RSpec.describe "when user visits book show page" do
     expect(current_path).to eq(books_path)
     expect(page).to_not have_content(css_title)
   end
+
+  it 'has stats box' do
+    @css.reviews.create_with(review_body: "Agriculture Secretary Thomas J. Vilsack", review_headline: "A", review_score: "5").find_or_create_by(user: "RACSCDrd")
+    @css.reviews.create_with(review_body: "Agriculture Secretary Thomas J. Vilsack", review_headline: "B", review_score: "5").find_or_create_by(user: "RACSrd")
+    @css.reviews.create_with(review_body: "Agriculture Secretary Thomas J. Vilsack", review_headline: "C", review_score: "5").find_or_create_by(user: "RDrd")
+    @css.reviews.create_with(review_body: "Agriculture Secretary Thomas J. Vilsack", review_headline: "a", review_score: "1").find_or_create_by(user: "rd")
+    @css.reviews.create_with(review_body: "Agriculture Secretary Thomas J. Vilsack", review_headline: "b", review_score: "1").find_or_create_by(user: "CCDrd")
+    @css.reviews.create_with(review_body: "Agriculture Secretary Thomas J. Vilsack", review_headline: "c", review_score: "1").find_or_create_by(user: "Drd")
+
+    visit book_path(@css)
+
+    within(".stats-box") do
+      within("#bestreviews") do
+        expect(page).to have_content("A")
+        expect(page).to have_content("5")
+        expect(page).to have_content("RACSCDrd")
+        expect(page).to have_content("B")
+        expect(page).to have_content("C")
+
+      end
+
+      within("#worstreviews") do
+        expect(page).to have_content("a")
+        expect(page).to have_content("1")
+        expect(page).to have_content("rd")
+        expect(page).to have_content("b")
+        expect(page).to have_content("c")
+      end
+
+      within("#averagerating") do
+        expect(page).to have_content("Average Rating: 3")
+      end
+    end
+  end
 end
