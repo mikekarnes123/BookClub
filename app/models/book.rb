@@ -9,9 +9,9 @@ class Book < ApplicationRecord
   after_initialize :set_defaults
   before_save :title_casing
 
-  def author_list
-    authors.pluck(:name).join(', ')
-  end
+  # def author_list
+  #   authors.pluck(:name).join(', ')
+  # end
 
   def self.best_books
    joins(:reviews).select("books.*, avg(reviews.review_score) as zebra").group(:id).order("zebra DESC")
